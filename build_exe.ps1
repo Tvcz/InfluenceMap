@@ -1,0 +1,1 @@
+pyinstaller --onefile --icon=icon.ico --noconsole -a -y --collect-all pyvis --clean influence_map_gui.py
