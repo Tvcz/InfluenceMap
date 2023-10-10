@@ -24,6 +24,7 @@ class Edge:
     def either_title_startswith(self, str):
         return self.src.title.startswith(str) or self.dest.title.startswith(str)
 
+    # see if either the source or destination node's summary is in the list of summaries
     def either_summary_in(self, summaries, threshold):
         sleep(0.05)
         return (
@@ -31,6 +32,7 @@ class Edge:
             or self.dest.summary[:threshold] in summaries
         )
 
+    # fix edges so that they connect to graph again in case of consolidation of nodes
     def consolidate(self, other):
         other_src = other.src.title.lower().strip()
         other_dest = other.dest.title.lower().strip()
@@ -55,6 +57,7 @@ class Edge:
         else:
             return {self, other}
 
+    # see if any of the titles can be consolitdated
     def can_be_consolidated(this_titles, other_titles):
         for title_t in this_titles:
             for title_o in other_titles:

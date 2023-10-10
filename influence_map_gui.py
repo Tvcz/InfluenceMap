@@ -54,6 +54,7 @@ BLACKLIST_TITLE_STARTERS = [
     "Portal:",
 ]
 
+
 # runs all the top-level functions
 def main(wndw, concept_list):
     global window
@@ -498,6 +499,7 @@ def tail(string, n):
 #    main(handle_args(sys.argv[1:]))
 
 
+# runner for the gui app
 def gui_main():
     gui.theme("DarkBlack")
 

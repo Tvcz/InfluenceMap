@@ -95,7 +95,7 @@ def clean(connections_list, min_connections=2):
     )
     return connections
 
-
+# remove pages whose titles start with blacklisted words
 def remove_blacklisted_title_starters(connections, blacklist):
     filtered_connections = connections
     for word in blacklist:
@@ -106,7 +106,7 @@ def remove_blacklisted_title_starters(connections, blacklist):
         ]
     return filtered_connections
 
-
+# remove pages that have summaries similar to blacklisted pages
 def exclude_blacklisted_pages(connections, blacklist):
     blacklist = wikify_concepts(blacklist, False)
     blacklist_sums = set(
@@ -142,11 +142,11 @@ def remove_dead_ends(connections, min_connections):
     ]
     return connections
 
-
+# filter out cycles from the graph
 def remove_cycles(connections):
     return [connection for connection in connections if not connection.is_cyclic()]
 
-
+# consolidate nodes with very similar titles into one node 
 def consolidate_titles(connections):
     consolidated_connections = set()
     for edge, otherEdge in combinations(connections, 2):
